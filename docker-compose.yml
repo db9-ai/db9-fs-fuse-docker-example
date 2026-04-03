@@ -1,0 +1,17 @@
+services:
+  db9-fuse:
+    build: .
+    environment:
+      # Required: your db9 API key
+      DB9_API_KEY: ${DB9_API_KEY}
+      # Optional: existing database name. Leave unset to auto-create a new one.
+      DB9_DBNAME: ${DB9_DBNAME:-}
+    stdin_open: true   # docker run -i
+    tty: true          # docker run -t
+    # FUSE requires /dev/fuse and SYS_ADMIN capability
+    devices:
+      - /dev/fuse:/dev/fuse
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
