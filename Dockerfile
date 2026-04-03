@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     jq \
     nodejs \
     npm \
+    git \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Claude Code CLI
