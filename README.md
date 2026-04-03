@@ -24,7 +24,7 @@ Note the database name from the output.
 ## Step 2 — Create an API token
 
 ```bash
-db9 token create --name docker-example
+db9 token create
 ```
 
 Copy the token — it's only shown once.
@@ -51,7 +51,7 @@ Log in to Claude when prompted, then start working — all files Claude reads an
 
 ## Step 5 — Watch the filesystem from your host
 
-In a separate terminal on your host:
+In a separate terminal on your host (or any remote machine):
 
 ```bash
 db9 fs watch mydb:/
