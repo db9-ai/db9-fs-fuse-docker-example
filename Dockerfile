@@ -25,10 +25,14 @@ RUN curl -fsSL https://db9.ai/install | sh
 # Verify db9 is on PATH
 RUN db9 --version
 
-# Create mount point
-RUN mkdir -p /mnt/db9fs
+# Create non-root user and mount point
+RUN useradd -m -s /bin/bash user && \
+    mkdir -p /mnt/db9fs && \
+    chown user:user /mnt/db9fs
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+USER user
 
 ENTRYPOINT ["/entrypoint.sh"]
